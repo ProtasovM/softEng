@@ -1,0 +1,105 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/users-notes/": {
+            "get": {
+                "summary": "Display a listing of the resource.",
+                "description": "Paginatable list of user notes",
+                "operationId": "0eb319fbb2b0e966f99c0a3347319614",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of the notes"
+                    },
+                    "204": {
+                        "description": "No content"
+                    },
+                    "403": {
+                        "description": "Not authorized."
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update the specified resource in storage.",
+                "description": "Update the specified resource in storage.",
+                "operationId": "d27bc289a165d9e79f55c86283217293",
+                "responses": {
+                    "200": {
+                        "description": "Note was updated."
+                    },
+                    "403": {
+                        "description": "Not authorized."
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            }
+        },
+        "/api/users-notes/{id}": {
+            "get": {
+                "summary": "Display the specified resource.",
+                "description": "Display the specified note.",
+                "operationId": "c4f9a4aa00c2ee60cf8221d08e6e50b1",
+                "responses": {
+                    "200": {
+                        "description": "Display the specified note."
+                    },
+                    "403": {
+                        "description": "Not authorized."
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            },
+            "post": {
+                "summary": "Store a newly created resource in storage.",
+                "description": "Store a newly created resource in storage.",
+                "operationId": "e99a6aa4eee8bee79eceea6013552bea",
+                "responses": {
+                    "201": {
+                        "description": "New note was created."
+                    },
+                    "403": {
+                        "description": "Not authorized."
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove the specified resource from storage.",
+                "description": "Remove the specified note from storage.",
+                "operationId": "7756a76a3a30391d15e1cf27b965209b",
+                "responses": {
+                    "200": {
+                        "description": "Note was deleted."
+                    },
+                    "403": {
+                        "description": "Not authorized."
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            },
+            "patch": {
+                "description": "Update the specified resource in storage.",
+                "operationId": "ef4894aff816f13108cdba679d564da2",
+                "responses": {
+                    "200": {
+                        "description": "Note was updated."
+                    },
+                    "403": {
+                        "description": "Not authorized."
+                    },
+                    "404": {
+                        "description": "Not found."
+                    }
+                }
+            }
+        }
+    }
+}

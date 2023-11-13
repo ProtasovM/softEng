@@ -25,6 +25,14 @@ class UserNoteController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @OA\Get(
+     *     path="/api/users-notes/",
+     *     description="Paginatable list of user notes",
+     *     @OA\Response(response="200", description="Display a listing of the notes"),
+     *     @OA\Response(response="204", description="No content"),
+     *     @OA\Response(response="403", description="Not authorized."),
+     *  )
      */
     public function index(IndexUserNoteRequest $request)
     {
@@ -60,6 +68,13 @@ class UserNoteController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @OA\Post(
+     *     path="/api/users-notes/{id}",
+     *     description="Store a newly created resource in storage.",
+     *     @OA\Response(response="201", description="New note was created."),
+     *     @OA\Response(response="403", description="Not authorized."),
+     * )
      */
     public function store(StoreUserNoteRequest $request)
     {
@@ -71,6 +86,14 @@ class UserNoteController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @OA\Get(
+     *     path="/api/users-notes/{id}",
+     *     description="Display the specified note.",
+     *     @OA\Response(response="200", description="Display the specified note."),
+     *     @OA\Response(response="403", description="Not authorized."),
+     *     @OA\Response(response="404", description="Not found."),
+     *  )
      */
     public function show(UserNote $userNote)
     {
@@ -79,6 +102,22 @@ class UserNoteController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @OA\Put(
+     *     path="/api/users-notes/",
+     *     description="Update the specified resource in storage.",
+     *     @OA\Response(response="200", description="Note was updated."),
+     *     @OA\Response(response="403", description="Not authorized."),
+     *     @OA\Response(response="404", description="Not found."),
+     *     )
+     *
+     * @OA\Patch(
+     *     path="/api/users-notes/{id}",
+     *     description="Update the specified resource in storage.",
+     *     @OA\Response(response="200", description="Note was updated."),
+     *     @OA\Response(response="403", description="Not authorized."),
+     *     @OA\Response(response="404", description="Not found."),
+     *     )
      */
     public function update(UpdateUserNoteRequest $request, UserNote $userNote)
     {
@@ -89,6 +128,14 @@ class UserNoteController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @OA\Delete(
+     *      path="/api/users-notes/{id}",
+     *      description="Remove the specified note from storage.",
+     *      @OA\Response(response="200", description="Note was deleted."),
+     *      @OA\Response(response="403", description="Not authorized."),
+     *      @OA\Response(response="404", description="Not found."),
+     *  )
      */
     public function destroy(UserNote $userNote)
     {
