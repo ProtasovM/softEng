@@ -17,8 +17,8 @@ class UserSeeder extends Seeder
         /** @var User $u */
         $u = User::create(
             [
-                'name' => 'user',
-                'email' => 'user@mail.com',
+                'name' => 'admin',
+                'email' => 'admin@mail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
                 'remember_token' => '',
@@ -26,6 +26,16 @@ class UserSeeder extends Seeder
         );
         $u->assignRole(Roles::Administrator->value);
 
-        User::factory()->count(999)->create();
+        User::create(
+            [
+                'name' => 'user',
+                'email' => 'user@mail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+                'remember_token' => '',
+            ]
+        );
+
+        User::factory()->count(998)->create();
     }
 }
