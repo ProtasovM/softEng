@@ -6,12 +6,23 @@ use App\Enums\Roles;
 use App\Http\Requests\IndexUserNoteRequest;
 use App\Http\Requests\StoreUserNoteRequest;
 use App\Http\Requests\UpdateUserNoteRequest;
+use App\Models\User;
 use App\Models\UserNote;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class UserNoteController extends Controller
 {
+    /**
+     * Создать экземпляр контроллера.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(UserNote::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -35,7 +46,7 @@ class UserNoteController extends Controller
         );
 
         if ($paginator->total() === 0) {
-            return \response(status: Response::HTTP_NO_CONTENT);
+            return \response(null, status: Response::HTTP_NO_CONTENT);
         }
 
         return \response()->json(
@@ -83,6 +94,6 @@ class UserNoteController extends Controller
     {
         $userNote->delete();
 
-        return \response();
+        return \response(null);
     }
 }

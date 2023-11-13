@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserNoteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,13 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('App\\Http\\Controllers')->group(function () {
     /*
-     * Заметки
+     * Ресурсы
      */
-    Route::prefix('notes')->group(function () {
-        Route::get('', 'UserNoteController@index');
-        Route::get('{id}', 'UserNoteController@show');
-        Route::put('{id}', 'UserNoteController@store');
-        Route::patch('{id}', 'UserNoteController@update');
-        Route::delete('{id}', 'UserNoteController@delete');
-    });
+    Route::apiResource('user-notes', UserNoteController::class);
 });
