@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UserNotePolicy
 {
-    public function before(): bool
+    public function before()
     {
-        return Auth::user()->hasRole(Roles::Administrator->value);
+        return Auth::user()->hasRole(Roles::Administrator->value)
+            ? true : null;
     }
 
     /**

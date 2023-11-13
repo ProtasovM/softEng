@@ -64,7 +64,7 @@ class UserNoteController extends Controller
     public function store(StoreUserNoteRequest $request)
     {
         return \response()->json(
-            UserNote::create($request->validated()),
+            Auth::user()->notes()->create($request->validated()),
             Response::HTTP_CREATED
         );
     }
