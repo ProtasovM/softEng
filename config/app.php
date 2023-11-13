@@ -185,4 +185,10 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+
+    /*
+     * Максимальное количество строк загружаемых в одном запросе из базы select
+     */
+
+    'max_rows_select_db' => env('MAX_ROWS_SELECT_DB', 500),
 ];

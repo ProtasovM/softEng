@@ -14,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('App\\Http\\Controllers')->group(function () {
+    /*
+     * Заметки
+     */
+    Route::prefix('notes')->group(function () {
+        Route::get('', 'UserNoteController@index');
+        Route::get('{id}', 'UserNoteController@show');
+        Route::put('{id}', 'UserNoteController@store');
+        Route::patch('{id}', 'UserNoteController@update');
+        Route::delete('{id}', 'UserNoteController@delete');
+    });
 });
