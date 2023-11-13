@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Roles;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -12,6 +14,18 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(1000)->create();
+        /** @var User $u */
+        $u = User::create(
+            [
+                'name' => 'user',
+                'email' => 'user@mail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+                'remember_token' => '',
+            ]
+        );
+        $u->assignRole(Roles::Administrator->value);
+
+        User::factory()->count(999)->create();
     }
 }

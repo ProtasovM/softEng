@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Roles;
 use App\Http\Requests\IndexUserNoteRequest;
 use App\Http\Requests\StoreUserNoteRequest;
 use App\Http\Requests\UpdateUserNoteRequest;
@@ -18,7 +19,9 @@ class UserNoteController extends Controller
     {
         $builder = UserNote::query();
 
-        if (true) { //todo admin
+        if (
+            Auth::user()->hasRole(Roles::Administrator->value) === false
+        ) {
             $builder->where(
                 'user_id',
                 '=',

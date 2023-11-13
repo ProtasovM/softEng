@@ -2,15 +2,16 @@
 
 namespace App\Policies;
 
+use App\Enums\Roles;
 use App\Models\User;
 use App\Models\UserNote;
-use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UserNotePolicy
 {
     public function before(): bool
     {
-        return false;//todo admin
+        return Auth::user()->hasRole(Roles::Administrator->value);
     }
 
     /**
